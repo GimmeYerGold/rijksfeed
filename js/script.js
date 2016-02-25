@@ -5,21 +5,23 @@ var baseURL ="https://www.rijksmuseum.nl/api/en/collection/"
 
 var searchterm = "&imgonly=true&format=json&f.dating.period="
 
-var searchBar = document.querySelector("input")
+var searchBar = document.querySelector('input[type="text"]')
 
 var search = function(event){
 
 	var inputEl = event.srcElement
-
 	if(event.keyCode === 13) {
+		
 		var userInput = inputEl.value 
-		inputEl.value = ""		
-	}
+		inputEl.value = ""	
 
-	var fullUrl = baseURL + apiKey + searchterm + userInput
+var fullUrl = baseURL + apiKey + searchterm + userInput
 	console.log(fullUrl)
 	var pinkyPromise = $.getJSON(fullUrl)
 	pinkyPromise.then(showData)
+
+	}
+
 }
 
 var showData = function(jsonData) {
